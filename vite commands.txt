@@ -1,0 +1,6 @@
+new folder
+terminal(command prompt)
+npm create vite@latest .
+react javascript
+npm install
+npm run dev
