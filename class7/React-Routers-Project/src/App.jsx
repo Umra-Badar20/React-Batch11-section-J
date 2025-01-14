@@ -10,6 +10,7 @@ function App() {
   const [isLogin, setIsLogin] = useState(false)
   return (
     <>
+    <button onClick={()=>{setIsLogin(!isLogin)}}>Toogle button</button>
       {
         (isLogin)?
         <ul>
