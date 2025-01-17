@@ -8,7 +8,8 @@ const About = () => {
   return (
     <>
       I am About Page {state.myNum}
-      <button onClick={()=>{dispatch({type:"ADD"})}}>Increment</button>
+      <button onClick={()=>{dispatch({type:"ADD"})}}>Increment</button> <br />
+      {state.user.name}
     </>
   )
 }

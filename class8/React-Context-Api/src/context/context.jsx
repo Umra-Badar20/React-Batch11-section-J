@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import { reducer } from './reducer';
 export const GlobalContext = createContext("Initial Value");
 let data = {
-  user: {},
+  user: {name: "Umra"},
   darkTheme: true,
   myNum : 0
 }
