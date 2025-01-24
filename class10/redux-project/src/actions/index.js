@@ -1,6 +1,7 @@
-export const incNum = ()=>{
+export const incNum = (num)=>{
     return {
-        type : "INCREMENT"
+        type : "INCREMENT",
+        payload : num
     }
 }
 export const decNum = ()=>{
