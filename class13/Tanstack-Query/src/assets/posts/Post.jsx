@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 
 
 const Post = () => {
-  const { data } = useQuery({
+  const { data ,isPending, error, isError } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
       try {
@@ -19,7 +19,9 @@ const Post = () => {
         console.log(error);
       }
     },
+    
   });
+   
   const queryClient = useQueryClient();
   // Delete Post
   const deleteMutation = useMutation({
@@ -46,7 +48,9 @@ const Post = () => {
       });
       return response.json();
     },
-    onSuccess: (updatedPost) => {//updated post object returned by the API
+    onSuccess: (updatedPost,data) => {//updated post object returned by the API
+      console.log(data);
+      
       queryClient.setQueryData(["posts"], (curEle) => {
         return curEle.map((post) =>(post.id === updatedPost.id ? updatedPost : post));
       });
@@ -59,7 +63,11 @@ const Post = () => {
     if(newTitle!== null && newBody !== null){
       updateMutation.mutate({postId,title:newTitle,body:newBody})
     }
+    
    }
+   if(isPending) return <h1>Loading...</h1>
+    if(isError) return <h1>{error.message}</h1>
+
   return (
     <>
      {/* {data?.map(({title, id, body})=>(
